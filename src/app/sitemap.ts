@@ -1,26 +1,26 @@
-import type { MetadataRoute } from "next";
-import { siteConfig } from "@/constants/site";
+import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/about",
-    "/contact",
-    "/services",
-    "/services/web-development-qatar",
-    "/services/crm-development-qatar",
-    "/services/business-website-qatar",
-    "/services/digital-solutions-qatar",
-    "/demos",
-    "/demos/restaurant-management-system-qatar",
-    "/demos/consultant-crm-qatar",
-    "/demos/shop-mini-crm-qatar",
+  return [
+    {
+      url: "https://samiracloud.com",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://samiracloud.com/services",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://samiracloud.com/demos",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://samiracloud.com/about",
+      lastModified: new Date(),
+    },
+    {
+      url: "https://samiracloud.com/contact",
+      lastModified: new Date(),
+    },
   ];
-
-  return routes.map((route) => ({
-    url: `${siteConfig.url}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.8,
-  }));
 }
