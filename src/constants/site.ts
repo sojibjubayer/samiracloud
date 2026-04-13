@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     "Samira Cloud provides web development, CRM systems, business websites, and digital solutions in Qatar. Digital System for Everyone.",
   slogan: "Digital System for Everyone",
-  url: "https://www.samiracloud.com", // change to your real domain
+  url: "https://samiracloud.com", // ✅ FIXED
   ogImage: "/og-image.jpg",
   location: "Doha, Qatar",
   keywords: [
