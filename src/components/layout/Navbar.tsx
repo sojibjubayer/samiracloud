@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import this hook
+import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Image from "next/image";
 
@@ -16,76 +16,97 @@ const links = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const pathname = usePathname(); // Get current route
+  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Text Color logic based on scroll state
+  const textColor = scrolled ? "text-white" : "text-slate-900";
+  const subTextColor = scrolled ? "text-slate-400" : "text-slate-500";
+  const navLinkColor = scrolled ? "text-slate-300 hover:text-white" : "text-slate-600 hover:text-blue-600";
+  const logoBg = scrolled ? "bg-white" : "bg-slate-950";
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 border-b border-gray-200/50 bg-white/70 backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-100 transition-all duration-500 ${
+        scrolled 
+          ? "border-b border-white/10 bg-slate-950/90 backdrop-blur-xl py-3 shadow-2xl" 
+          : "bg-transparent py-6"
+      }`}
+    >
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
         
         {/* Logo Section */}
-{/* Logo Section */}
-<Link href="/" className="group flex items-center gap-3">
-  <div className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-black transition-transform group-hover:scale-105">
-    {/* Using Next.js Image Component for the Icon */}
-    <Image
-      src="/logo.webp" // Path to your logo icon file
-      alt="Samira Cloud Icon"
-      width={40}
-      height={40}
-      className="relative z-10 object-contain p-1.5"
-    />
-    
-    {/* Pink Glow - Matches your brand palette */}
-    <div className="absolute inset-0 bg-pink-400 opacity-0 blur-md transition-opacity group-hover:opacity-40"></div>
-  </div>
+        <Link href="/" className="group flex items-center gap-3">
+          <div className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-110 ${logoBg}`}>
+            <Image
+              src="/logo.webp"
+              alt="Samira Cloud Icon"
+              width={32}
+              height={32}
+              className={`relative z-10 object-contain p-1 ${!scrolled && "invert"}`}
+            />
+            <div className="absolute inset-0 bg-pink-500 opacity-0 blur-md transition-opacity group-hover:opacity-20" />
+          </div>
 
-  <div className="hidden flex-col sm:flex">
-    <p className="text-sm font-bold tracking-tight text-black leading-tight">
-      Samira Cloud
-    </p>
-    <p className="text-[10px] uppercase tracking-widest text-gray-500 leading-tight">
-      Digital Systems • Qatar
-    </p>
-  </div>
-</Link>
+          <div className="flex flex-col">
+            <p className={`text-sm font-black tracking-tight leading-tight uppercase transition-colors duration-300 ${textColor}`}>
+              <span className="text-pink-500">Samira</span> <span className="text-blue-500">Cloud</span>
+            </p>
+            <p className={`text-[9px] font-bold uppercase tracking-[0.2em] leading-tight transition-colors duration-300 ${subTextColor}`}>
+              Qatar • Digital
+            </p>
+          </div>
+        </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-10 md:flex">
           {links.map((link) => {
-            const isActive = pathname === link.href; // Check if active
+            const isActive = pathname === link.href;
             
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`relative text-sm font-medium transition-colors group ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                className={`relative text-[13px] font-bold uppercase tracking-widest transition-all duration-300 ${
+                  isActive ? "text-blue-500" : navLinkColor
                 }`}
               >
                 {link.label}
-                {/* Active Indicator: Pink line stays full width if active, animate on hover otherwise */}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-pink-400 transition-all ${
+                <span className={`absolute -bottom-1.5 left-0 h-0.5 bg-linear-to-r from-blue-500 to-pink-500 transition-all duration-300 ${
                   isActive ? "w-full" : "w-0 group-hover:w-full"
-                }`}></span>
+                }`} />
               </Link>
             );
           })}
         </div>
 
-        {/* Action Button */}
-        <div className="hidden md:block">
+        {/* Action Button - Inverts colors based on scroll */}
+        <div className="hidden items-center gap-4 md:flex">
           <Link
             href="/contact"
-            className="group flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition-all hover:bg-blue-700 hover:shadow-blue-300 active:scale-95"
+            className={`group relative flex items-center gap-2 overflow-hidden rounded-xl px-6 py-2.5 text-xs font-black uppercase tracking-widest transition-all active:scale-95 ${
+              scrolled 
+                ? "bg-white text-slate-950" 
+                : "bg-slate-950 text-white shadow-xl shadow-slate-200"
+            }`}
           >
-            Get Quote
-            <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+            <span className="relative z-10">Get Quote</span>
+            <ArrowRight size={14} className="relative z-10 transition-transform group-hover:translate-x-1" />
+            <div className="absolute inset-0 -translate-x-full bg-blue-500/10 transition-transform duration-300 group-hover:translate-x-0" />
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button 
-          className="rounded-lg p-2 text-gray-600 md:hidden"
+          className={`rounded-xl p-2 transition-colors md:hidden ${
+            scrolled ? "text-white bg-white/5" : "text-slate-900 bg-slate-100"
+          }`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -94,28 +115,25 @@ export default function Navbar() {
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute inset-x-0 top-full flex flex-col space-y-4 border-b border-gray-200 bg-white p-6 shadow-xl md:hidden">
-          {links.map((link) => {
-            const isActive = pathname === link.href;
-
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className={`text-lg font-medium transition-colors ${
-                  isActive ? "border-l-4 border-pink-400 pl-3 text-blue-600" : "text-gray-900"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
+        <div className="absolute inset-x-0 top-full flex flex-col space-y-4 border-b border-white/10 bg-slate-950 p-8 shadow-2xl md:hidden animate-in slide-in-from-top duration-300">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setIsOpen(false)}
+              className={`text-xl font-bold uppercase tracking-tighter ${
+                pathname === link.href ? "text-blue-400" : "text-white"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
           <Link
             href="/contact"
-            className="flex items-center justify-center rounded-xl bg-black py-4 text-center font-bold text-white"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center justify-center rounded-xl bg-linear-to-r from-blue-600 to-pink-600 py-4 text-center font-black uppercase tracking-widest text-white"
           >
-            Get Started
+            Start Your Project
           </Link>
         </div>
       )}
