@@ -45,7 +45,7 @@ export default function Navbar() {
         <Link href="/" className="group flex items-center gap-3">
           <div className={`relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-110 ${logoBg}`}>
             <Image
-              src="/logo.webp"
+              src="/icon.webp"
               alt="Samira Cloud Icon"
               width={32}
               height={32}
