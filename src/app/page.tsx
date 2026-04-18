@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { createMetadata } from "@/lib/seo";
 import HeroSection from "@/components/home/HeroSection";
 import ServicesSection from "@/components/home/ServicesSection";
-import DemoSection from "@/components/home/DemoSection";
 import CTASection from "@/components/home/CTASection";
 
 export const metadata: Metadata = createMetadata({
@@ -17,7 +16,6 @@ export default function HomePage() {
     <main>
       <HeroSection />
       <ServicesSection />
-      {/* <DemoSection /> */}
       <CTASection />
     </main>
   );
