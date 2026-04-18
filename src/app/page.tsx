@@ -17,7 +17,7 @@ export default function HomePage() {
     <main>
       <HeroSection />
       <ServicesSection />
-      <DemoSection />
+      {/* <DemoSection /> */}
       <CTASection />
     </main>
   );
