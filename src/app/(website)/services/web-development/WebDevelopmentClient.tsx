@@ -179,7 +179,7 @@ const deliverables = [
 export default function WebDevelopmentClient() {
   return (
     <main className="min-h-screen overflow-x-hidden bg-[linear-gradient(180deg,#f8fbff_0%,#edf4ff_35%,#fff4fa_100%)] text-slate-900">
-      <section className="relative overflow-hidden px-4 pt-20 pb-12 sm:px-6 md:px-10 md:pt-26 md:pb-20">
+      <section className="relative overflow-hidden px-4 pt-28 pb-12 sm:px-6 md:px-10 md:pt-28 md:pb-20">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(37,99,235,0.18),transparent_28%),radial-gradient(circle_at_left,rgba(236,72,153,0.15),transparent_28%)]" />
         <div className="absolute top-10 right-0 h-64 w-64 rounded-full bg-pink-300/10 blur-3xl" />
         <div className="absolute bottom-0 left-0 h-64 w-64 rounded-full bg-blue-300/10 blur-3xl" />

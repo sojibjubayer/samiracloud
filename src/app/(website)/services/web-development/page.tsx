@@ -7,7 +7,7 @@ const SITE_URL =
 
 const PAGE_PATH = "/services/web-development";
 const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
-const OG_IMAGE = `${SITE_URL}/og-image.jpg`;
+const OG_IMAGE = `${SITE_URL}/og-image.webp`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
