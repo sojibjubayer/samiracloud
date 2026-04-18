@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import DemosClient from "./DemosClient";
+import ProjectsClient from "./ProjectsClient";
 
 export const metadata: Metadata = {
   title: "Live Demos | Digital Systems & CRM Solutions | Samira Cloud Qatar",
@@ -10,5 +10,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <DemosClient />;
-}
+  return <ProjectsClient />;
+} 

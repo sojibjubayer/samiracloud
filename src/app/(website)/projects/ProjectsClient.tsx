@@ -58,7 +58,7 @@ const projects = [
   }
 ];
 
-export default function DemosClient() {
+export default function ProjectsClient() {
   const [filter, setFilter] = useState("All");
 
   const categories = ["All", "Systems", "Web"];
