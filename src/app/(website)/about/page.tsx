@@ -1,39 +1,91 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import AboutClient from "./AboutClient";
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://samiracloud.com";
+
+const PAGE_PATH = "/about";
+const PAGE_URL = `${SITE_URL}${PAGE_PATH}`;
+const OG_IMAGE = `${SITE_URL}/about-og.webp`;
+
 export const metadata: Metadata = {
-  // Title: Focused on "Growth" and "Automation"
-  title: "Samira Cloud | Business Automation & Custom Web Solutions Qatar",
-  
-  // Description: Focused on local trust, reliability, and business results
-  description: "Samira Cloud delivers high-speed business automation and premium web solutions in Doha. We engineer secure, growth-oriented digital systems designed for Qatari enterprise excellence and digital transformation.",
-  
+  metadataBase: new URL(SITE_URL),
+  title: "About Samira Cloud | Digital Systems & Branding in Qatar",
+  description:
+    "Learn about Samira Cloud, a Doha-based digital partner providing premium web development, CRM systems, QR attendance systems, and digital branding solutions for businesses in Qatar.",
   keywords: [
-    "Business Automation Doha",
-    "Digital Transformation Qatar",
-    "Custom Web Solutions Doha",
-    "Management Systems Qatar",
-    "Online Growth Strategy Doha",
-    "Premium Web Design Qatar",
-    "Enterprise Software Solutions Doha",
-    "Local SEO Strategy Qatar",
-    "Operational Efficiency Tools Doha"
+    "About Samira Cloud",
+    "digital systems Qatar",
+    "web development Qatar",
+    "CRM systems Qatar",
+    "QR attendance systems Qatar",
+    "digital branding Qatar",
+    "Doha digital agency",
   ],
-
   alternates: {
-    canonical: "https://samiracloud.com/about",
+    canonical: PAGE_URL,
   },
-
   openGraph: {
-    title: "Samira Cloud | Engineering Business Growth in Qatar",
-    description: "Architecting secure, high-speed business systems and automated workflows for the Doha corporate sector.",
-    url: "https://samiracloud.com/about",
+    title: "About Samira Cloud | Digital Systems & Branding in Qatar",
+    description:
+      "Samira Cloud builds premium websites, CRM systems, QR attendance platforms, and digital branding solutions for businesses in Qatar.",
+    url: PAGE_URL,
     siteName: "Samira Cloud",
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: "About Samira Cloud",
+      },
+    ],
+    locale: "en_QA",
     type: "website",
-    locale: "en_QA", // Specifically targeting the Qatari region
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Samira Cloud | Digital Systems & Branding in Qatar",
+    description:
+      "Discover Samira Cloud’s approach to premium websites, business systems, and digital branding in Qatar.",
+    images: [OG_IMAGE],
   },
 };
 
-export default function AboutPage() {
-  return <AboutClient />;
+export default function Page() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        url: PAGE_URL,
+        name: "About Samira Cloud",
+        description:
+          "About page for Samira Cloud, a digital systems and branding partner in Doha, Qatar.",
+      },
+      {
+        "@type": "Organization",
+        name: "Samira Cloud",
+        url: SITE_URL,
+        logo: `${SITE_URL}/logo.png`,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Doha",
+          addressCountry: "QA",
+        },
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Script
+        id="about-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AboutClient />
+    </>
+  );
 }
