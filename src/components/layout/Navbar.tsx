@@ -58,35 +58,35 @@ export default function Navbar() {
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="group flex min-w-0 items-center gap-3">
-          <div
-            className={`relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-110 ${logoBg}`}
-          >
-            <Image
-              src="/logo.webp"
-              alt="Samira Cloud Icon"
-              width={32}
-              height={32}
-              className={`relative z-10 object-contain p-1 ${
-                !scrolled ? "invert" : ""
-              }`}
-            />
-            <div className="absolute inset-0 bg-pink-500 opacity-0 blur-md transition-opacity duration-300 group-hover:opacity-20" />
-          </div>
+  {/* Increased container size from h-10 to h-12 for better clarity */}
+  <div
+    className={`relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl transition-all duration-300 group-hover:scale-105 ${
+      scrolled ? "bg-slate-900" : "bg-white/10 backdrop-blur-md border border-white/20"
+    }`}
+  >
+    <Image
+      src="/logo.png"
+      alt="Samira Cloud Logo"
+      // Increased size and removed 'invert' which ruins gradient logos
+      width={40} 
+      height={40}
+      priority
+      className="relative z-10 object-contain"
+    />
+    {/* Animated Glow Effect */}
+    <div className="absolute inset-0 bg-linear-to-tr from-blue-500 to-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-20" />
+  </div>
 
-          <div className="flex min-w-0 flex-col">
-            <p
-              className={`truncate text-sm font-black uppercase leading-tight tracking-tight transition-colors duration-300 ${textColor}`}
-            >
-              <span className="text-pink-500">Samira</span>{" "}
-              <span className="text-blue-500">Cloud</span>
-            </p>
-            <p
-              className={`text-[9px] font-bold uppercase leading-tight tracking-[0.2em] transition-colors duration-300 ${subTextColor}`}
-            >
-              Qatar • Digital
-            </p>
-          </div>
-        </Link>
+  <div className="flex min-w-0 flex-col">
+    <p className={`truncate text-base font-black uppercase leading-tight tracking-tight transition-colors duration-300 ${textColor}`}>
+      <span className="text-pink-500">Samira</span>{" "}
+      <span className="text-blue-500">Cloud</span>
+    </p>
+    <p className={`text-[10px] font-bold uppercase leading-tight tracking-[0.25em] transition-colors duration-300 ${subTextColor}`}>
+      Qatar <span className="text-pink-500/50 mx-0.5">•</span> Digital
+    </p>
+  </div>
+</Link>
 
         <div className="hidden items-center gap-8 lg:flex">
           <Link
