@@ -64,7 +64,7 @@ export default function Navbar() {
       scrolled ? "bg-slate-900" : "bg-white/10 backdrop-blur-md border border-white/20"
     }`}
   >
-import Image from "next/image";
+
 
 <Image
   src="/logo.png"
