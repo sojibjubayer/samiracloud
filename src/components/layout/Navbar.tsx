@@ -64,15 +64,16 @@ export default function Navbar() {
       scrolled ? "bg-slate-900" : "bg-white/10 backdrop-blur-md border border-white/20"
     }`}
   >
-    <Image
-      src="/logo.png"
-      alt="Samira Cloud Logo"
-      // Increased size and removed 'invert' which ruins gradient logos
-      width={40} 
-      height={40}
-      priority
-      className="relative z-10 object-contain"
-    />
+import Image from "next/image";
+
+<Image
+  src="/logo.png"
+  alt="Samira Cloud Logo"
+  width={40}
+  height={40}
+  priority
+  className="relative z-10 h-auto w-auto object-contain"
+/>
     {/* Animated Glow Effect */}
     <div className="absolute inset-0 bg-linear-to-tr from-blue-500 to-pink-500 opacity-0 transition-opacity duration-300 group-hover:opacity-20" />
   </div>
