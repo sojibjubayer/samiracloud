@@ -25,20 +25,22 @@ export default function CTASection() {
             </div>
 
             <h2 className="text-4xl font-black tracking-tighter text-white sm:text-5xl lg:text-6xl lg:leading-[1.08]">
-              Ready to build smarter{" "}
+              Ready to grow your business{" "}
               <span className="bg-linear-to-r from-blue-400 via-blue-100 to-pink-400 bg-clip-text text-transparent">
-                digital systems?
+                with smarter digital systems?
               </span>
             </h2>
 
             <p className="mx-auto mt-8 max-w-2xl text-base leading-8 text-slate-400 sm:text-lg">
-              From premium business websites to custom CRM platforms, QR-based
-              attendance systems, and internal business tools, we create modern
-              solutions that help companies work better and grow with confidence.
+              From Google Business Profile setup and local SEO to premium
+              websites, custom CRM platforms, QR-based attendance systems, and
+              internal business tools, we create modern solutions that help
+              companies grow faster and operate smarter in Qatar.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
               {[
+                "Google Business Profile",
                 "Web Development",
                 "CRM Systems",
                 "QR Attendance",
@@ -48,7 +50,7 @@ export default function CTASection() {
                   key={item}
                   className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-xs font-semibold tracking-wide text-slate-300"
                 >
-                  <Sparkles size={12} className="text-blue-400" />
+                  <Sparkles size={12} className="text-pink-400" />
                   {item}
                 </span>
               ))}
@@ -56,8 +58,18 @@ export default function CTASection() {
 
             <div className="mt-12 flex flex-col items-center justify-center gap-5 sm:flex-row">
               <Link
+                href="/services/google-business-profile"
+                className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-2xl bg-linear-to-r from-pink-500 to-violet-600 px-8 text-center text-xs font-black uppercase tracking-widest text-white transition-all hover:scale-[1.02] active:scale-95 sm:w-auto sm:px-10 sm:text-sm"
+              >
+                <span className="relative z-10">
+                  Google Profile – 199 QAR
+                </span>
+                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              </Link>
+
+              <Link
                 href="/contact"
-                className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-2xl bg-white px-10 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:scale-[1.02] active:scale-95 sm:w-auto"
+                className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-2xl bg-white px-8 text-center text-xs font-black uppercase tracking-widest text-slate-950 transition-all hover:scale-[1.02] active:scale-95 sm:w-auto sm:px-10 sm:text-sm"
               >
                 <span className="relative z-10">Start Your Project</span>
                 <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-blue-100/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />

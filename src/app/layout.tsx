@@ -12,19 +12,19 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords: siteConfig.keywords,
-  
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="antialiased selection:bg-pink-100 selection:text-pink-600">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <body
+        className="antialiased selection:bg-pink-100 selection:text-pink-600"
+        suppressHydrationWarning
+      >
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>

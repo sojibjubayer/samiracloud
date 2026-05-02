@@ -233,7 +233,7 @@ export default function Navbar() {
                 : "bg-slate-950 text-white shadow-xl shadow-slate-200"
             }`}
           >
-            <span className="relative z-10">Get Quote</span>
+            <span className="relative z-10">Start Project</span>
 
             <ArrowRight
               size={14}

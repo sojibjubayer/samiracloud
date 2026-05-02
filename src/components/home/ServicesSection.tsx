@@ -82,7 +82,7 @@ export default function ServicesSection() {
                 key={service.title}
                 className="group relative flex min-h-full flex-col rounded-3xl border border-white/10 bg-white/4 p-6 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-blue-400/40 hover:bg-white/[0.07] sm:p-7"
               >
-                <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/10 text-blue-400 ring-1 ring-blue-400/20 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white">
+               <div className="mb-7 flex h-12 w-12 items-center justify-center rounded-2xl bg-pink-500/10 text-pink-400 ring-1 ring-pink-400/20 transition-all duration-300 group-hover:bg-linear-to-r group-hover:from-pink-500 group-hover:to-violet-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-pink-500/30">
                   <Icon size={24} />
                 </div>
 
