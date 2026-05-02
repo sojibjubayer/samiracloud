@@ -34,7 +34,7 @@ export async function POST(req: Request) {
     }
 
     await resend.emails.send({
-      from: "Samira Cloud <onboarding@resend.dev>",
+      from: "Samira Cloud <hello@samiracloud.com>",
       to: ["hello@samiracloud.com"],
       replyTo: email,
       subject: `New Website Lead from ${name}`,
