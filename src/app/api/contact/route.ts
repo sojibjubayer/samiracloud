@@ -15,47 +15,56 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-    const name = String(body.name || "").trim();
-    const phone = String(body.phone || "").trim();
-    const email = String(body.email || "").trim();
-    const service = String(body.service || "").trim();
-    const message = String(body.message || "").trim();
-    const company = String(body.company || "").trim(); // honeypot
+    const { name, phone, email, service, message } = body;
 
-    if (company) {
-      return Response.json({ success: true });
-    }
-
-    if (!name || !phone || !email || !message) {
-      return Response.json(
-        { success: false, message: "Please fill all required fields." },
-        { status: 400 }
-      );
-    }
-
+    // 1️⃣ Send to YOU (lead email)
     await resend.emails.send({
       from: "Samira Cloud <hello@samiracloud.com>",
       to: ["hello@samiracloud.com"],
       replyTo: email,
       subject: `New Website Lead from ${name}`,
       html: `
-        <div style="font-family:Arial,sans-serif;line-height:1.6;color:#111827">
-          <h2>New Contact Form Message</h2>
-          <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone)}</p>
-          <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Service:</strong> ${escapeHtml(service || "Not selected")}</p>
-          <p><strong>Message:</strong></p>
-          <p>${escapeHtml(message).replaceAll("\n", "<br />")}</p>
+        <h2>New Lead 🚀</h2>
+        <p><b>Name:</b> ${escapeHtml(name)}</p>
+        <p><b>Phone:</b> ${escapeHtml(phone)}</p>
+        <p><b>Email:</b> ${escapeHtml(email)}</p>
+        <p><b>Service:</b> ${escapeHtml(service)}</p>
+        <p><b>Message:</b><br/>${escapeHtml(message)}</p>
+      `,
+    });
+
+    // 2️⃣ Auto-reply to USER
+    await resend.emails.send({
+      from: "Samira Cloud <hello@samiracloud.com>",
+      to: [email],
+      subject: "We received your message",
+      html: `
+        <div style="font-family:Arial,sans-serif;line-height:1.6">
+          <h2>Thanks for contacting Samira Cloud</h2>
+
+          <p>Hi ${escapeHtml(name)},</p>
+
+          <p>
+            We received your request about 
+            <strong>${escapeHtml(service)}</strong>.
+          </p>
+
+          <p>
+            Our team will review your message and get back to you shortly.
+          </p>
+
+          <br/>
+
+          <p>Best regards,</p>
+          <p><strong>Samira Cloud</strong><br/>Doha, Qatar</p>
         </div>
       `,
     });
 
     return Response.json({ success: true });
-  } catch {
-    return Response.json(
-      { success: false, message: "Something went wrong." },
-      { status: 500 }
-    );
+
+  } catch (error) {
+    console.error(error);
+    return Response.json({ success: false });
   }
 }
