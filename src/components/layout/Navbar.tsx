@@ -14,9 +14,22 @@ const mainLinks = [
 ];
 
 const serviceLinks = [
-  { label: "Web Development", href: "/services/web-development" },
-  { label: "CRM Systems", href: "/services/crm-systems" },
-  { label: "QR Attendance Systems", href: "/services/attendance-systems" },
+  {
+    label: "Google Business Profile",
+    href: "/services/google-business-profile",
+  },
+  {
+    label: "Web Development",
+    href: "/services/web-development",
+  },
+  {
+    label: "CRM Systems",
+    href: "/services/crm-systems",
+  },
+  {
+    label: "QR Attendance Systems",
+    href: "/services/attendance-systems",
+  },
 ];
 
 export default function Navbar() {
@@ -140,8 +153,8 @@ export default function Navbar() {
                   isServicesActive
                     ? "text-blue-500"
                     : scrolled
-                    ? "text-slate-300"
-                    : "text-slate-600"
+                      ? "text-slate-300"
+                      : "text-slate-600"
                 }`}
               />
             </div>
@@ -169,6 +182,9 @@ export default function Navbar() {
                       </p>
 
                       <p className="mt-1 text-xs leading-5 text-slate-500">
+                        {link.href === "/services/google-business-profile" &&
+                          "Get listed on Google Maps and improve local visibility"}
+                          
                         {link.href === "/services/web-development" &&
                           "Responsive websites built for business growth"}
 
@@ -249,9 +265,7 @@ export default function Navbar() {
           type="button"
           onClick={() => setIsOpen((prev) => !prev)}
           className={`rounded-xl p-2 transition-colors lg:hidden ${
-            scrolled
-              ? "bg-white/5 text-white"
-              : "bg-slate-100 text-slate-900"
+            scrolled ? "bg-white/5 text-white" : "bg-slate-100 text-slate-900"
           }`}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
@@ -267,9 +281,7 @@ export default function Navbar() {
             <Link
               href="/"
               className={`rounded-xl px-3 py-3 text-base font-bold uppercase tracking-wide ${
-                pathname === "/"
-                  ? "bg-white/5 text-blue-400"
-                  : "text-white"
+                pathname === "/" ? "bg-white/5 text-blue-400" : "text-white"
               }`}
             >
               Home
@@ -288,9 +300,7 @@ export default function Navbar() {
 
                 <button
                   type="button"
-                  onClick={() =>
-                    setMobileServicesOpen((prev) => !prev)
-                  }
+                  onClick={() => setMobileServicesOpen((prev) => !prev)}
                   className="px-3 py-3 text-white"
                   aria-label="Toggle services submenu"
                   aria-expanded={mobileServicesOpen}
@@ -335,9 +345,7 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   className={`mt-1 rounded-xl px-3 py-3 text-base font-bold uppercase tracking-wide ${
-                    isActive
-                      ? "bg-white/5 text-blue-400"
-                      : "text-white"
+                    isActive ? "bg-white/5 text-blue-400" : "text-white"
                   }`}
                 >
                   {link.label}
@@ -357,4 +365,3 @@ export default function Navbar() {
     </header>
   );
 }
-
