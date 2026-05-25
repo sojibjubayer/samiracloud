@@ -6,8 +6,8 @@ export default function DemoSection() {
     <section className="relative bg-slate-950 py-24 sm:py-32">
       {/* Premium Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-[10%] -left-[10%] h-[40%] w-[40%] rounded-full bg-blue-900/20 blur-[120px]" />
-        <div className="absolute top-[20%] -right-[10%] h-[30%] w-[30%] rounded-full bg-pink-900/10 blur-[120px]" />
+        <div className="absolute top-[-10%] left-[-10%] h-[40%] w-[40%] rounded-full bg-blue-900/20 blur-[120px]" />
+        <div className="absolute top-[20%] right-[-10%] h-[30%] w-[30%] rounded-full bg-pink-900/10 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
