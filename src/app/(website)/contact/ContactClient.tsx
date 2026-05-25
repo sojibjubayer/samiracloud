@@ -31,7 +31,7 @@ export default function ContactClient() {
     email: "",
     service: "Google Business Profile",
     message: "",
-    company: "", // anti-spam honeypot
+    company: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -44,7 +44,9 @@ export default function ContactClient() {
   });
 
   const updateField = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -103,235 +105,233 @@ export default function ContactClient() {
 
   return (
     <main className="relative min-h-screen overflow-x-hidden bg-slate-950 text-white">
-      <div className="pointer-events-none absolute left-0 top-0 -z-10 h-208 w-full overflow-hidden">
-        <div className="absolute -left-20 -top-32 h-136 w-136 rounded-full bg-blue-600/10 blur-[130px]" />
-        <div className="absolute left-[5%] top-0 h-96 w-[24rem] rounded-full bg-pink-500/5 blur-[110px]" />
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute left-1/2 top-0 h-96 w-[24rem] -translate-x-1/2 rounded-full bg-blue-600/10 blur-[120px]" />
+        <div className="absolute right-0 top-80 h-88 w-88 rounded-full bg-pink-500/10 blur-[120px]" />
       </div>
 
-      <section className="relative pb-20 pt-32 lg:pb-28 lg:pt-44">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-center">
-            <div className="max-w-2xl">
-              <span className="inline-flex rounded-full border border-blue-500/20 bg-blue-500/5 px-4 py-1.5 text-[10px] font-black uppercase tracking-[0.3em] text-blue-400">
-                Connect With Doha Team
+      <section className="relative px-4 pb-16 pt-28 sm:px-6 sm:pb-20 sm:pt-32 lg:px-8 lg:pb-28 lg:pt-44">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 lg:grid-cols-2 lg:items-start lg:gap-14">
+          {/* Left Content */}
+          <div className="min-w-0">
+            <span className="inline-flex max-w-full items-center rounded-full border border-blue-500/20 bg-blue-500/6 px-3 py-1.5 text-[9px] font-black uppercase tracking-[0.22em] text-blue-300 sm:px-4 sm:text-[10px]">
+              <span className="truncate">Connect With Doha Team</span>
+            </span>
+
+            <h1 className="mt-6 max-w-3xl text-[38px] font-black leading-[1.08] tracking-tight text-white sm:mt-8 sm:text-6xl lg:text-7xl lg:leading-[1.03]">
+              Let’s build smarter{" "}
+              <span className="bg-linear-to-r from-blue-400 via-blue-200 to-pink-500 bg-clip-text text-transparent">
+                digital systems
               </span>
+            </h1>
 
-              <h1 className="mt-8 text-5xl font-black tracking-tighter text-white sm:text-6xl lg:text-7xl lg:leading-[1.05]">
-                Let’s build smarter{" "}
-                <span className="bg-linear-to-r from-blue-400 via-blue-200 to-pink-500 bg-clip-text text-transparent">
-                  digital systems
+            <p className="mt-6 max-w-2xl text-base leading-8 text-slate-400 sm:mt-8 sm:text-xl">
+              From Google Business Profile setup to premium websites, custom CRM
+              systems, QR-based attendance platforms, and digital branding
+              solutions — Samira Cloud helps businesses in Qatar operate better
+              and grow with confidence.
+            </p>
+
+            {/* Hide service pills on very small screens */}
+            <div className="mt-8 hidden flex-wrap gap-3 sm:flex">
+              {services.map((item) => (
+                <span
+                  key={item}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-xs font-semibold tracking-wide text-slate-300"
+                >
+                  <Sparkles size={12} className="text-pink-400" />
+                  {item}
                 </span>
-              </h1>
-
-              <p className="mt-8 text-lg leading-relaxed text-slate-400 sm:text-xl">
-                From Google Business Profile setup to premium websites, custom
-                CRM systems, QR-based attendance platforms, and digital branding
-                solutions — Samira Cloud helps businesses in Qatar operate
-                better and grow with confidence.
-              </p>
-
-              <div className="mt-10 flex flex-wrap gap-3">
-                {services.map((item) => (
-                  <span
-                    key={item}
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-xs font-semibold tracking-wide text-slate-300"
-                  >
-                    <Sparkles size={12} className="text-pink-400" />
-                    {item}
-                  </span>
-                ))}
-              </div>
-
-              <div className="mt-12 space-y-6">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center gap-4 rounded-4xl border border-white/10 bg-white/3 p-6 transition-all hover:border-green-500/30 hover:bg-white/5"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-slate-900">
-                    <MessageSquare className="h-6 w-6 text-green-400" />
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest text-slate-500">
-                      WhatsApp
-                    </p>
-                    <p className="text-lg font-bold text-white">
-                      {whatsappNumber}
-                    </p>
-                  </div>
-
-                  <ArrowRight className="ml-auto h-5 w-5 text-slate-600 transition-transform group-hover:translate-x-1 group-hover:text-green-400" />
-                </a>
-
-                <a
-                  href={`mailto:${emailAddress}`}
-                  className="group flex items-center gap-4 rounded-4xl border border-white/10 bg-white/3 p-6 transition-all hover:border-pink-500/30 hover:bg-white/5"
-                >
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-slate-900">
-                    <Mail className="h-6 w-6 text-pink-400" />
-                  </div>
-
-                  <div>
-                    <p className="text-xs font-black uppercase tracking-widest text-slate-500">
-                      Business Email
-                    </p>
-                    <p className="text-lg font-bold text-white">
-                      {emailAddress}
-                    </p>
-                  </div>
-
-                  <ArrowRight className="ml-auto h-5 w-5 text-slate-600 transition-transform group-hover:translate-x-1 group-hover:text-pink-400" />
-                </a>
-              </div>
+              ))}
             </div>
 
-            <div className="rounded-[2.5rem] border border-white/10 bg-white/3 p-8 backdrop-blur-md sm:p-10 lg:p-12">
-              <h2 className="mb-8 text-2xl font-bold tracking-tight text-white">
-                Start Your Project
-              </h2>
-
-              <form className="space-y-6" onSubmit={handleSubmit}>
-                <input
-                  type="text"
-                  name="company"
-                  value={form.company}
-                  onChange={updateField}
-                  className="hidden"
-                  tabIndex={-1}
-                  autoComplete="off"
-                />
-
-                <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <label className="ml-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                      Full Name
-                    </label>
-                    <input
-                      name="name"
-                      type="text"
-                      value={form.name}
-                      onChange={updateField}
-                      placeholder="Your Name"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-white placeholder-slate-600 outline-none transition focus:border-pink-500/50"
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <label className="ml-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                      Phone
-                    </label>
-                    <input
-                      name="phone"
-                      type="tel"
-                      value={form.phone}
-                      onChange={updateField}
-                      placeholder="+974"
-                      className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-white placeholder-slate-600 outline-none transition focus:border-pink-500/50"
-                    />
-                  </div>
+            <div className="mt-10 space-y-4 sm:space-y-5">
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex min-w-0 items-center gap-3 rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-4 transition hover:border-green-500/30 hover:bg-green-500/6 sm:gap-4 sm:p-5"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-900 sm:h-14 sm:w-14">
+                  <MessageSquare className="h-5 w-5 text-green-400 sm:h-6 sm:w-6" />
                 </div>
 
+                <div className="min-w-0">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 sm:text-xs">
+                    WhatsApp
+                  </p>
+                  <p className="truncate text-base font-bold text-white sm:text-lg">
+                    {whatsappNumber}
+                  </p>
+                </div>
+
+                <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-slate-600 transition-transform group-hover:translate-x-1 group-hover:text-green-400" />
+              </a>
+
+              <a
+                href={`mailto:${emailAddress}`}
+                className="group flex min-w-0 items-center gap-3 rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-4 transition hover:border-pink-500/30 hover:bg-pink-500/6 sm:gap-4 sm:p-5"
+              >
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-slate-900 sm:h-14 sm:w-14">
+                  <Mail className="h-5 w-5 text-pink-400 sm:h-6 sm:w-6" />
+                </div>
+
+                <div className="min-w-0">
+                  <p className="text-[10px] font-black uppercase tracking-widest text-slate-500 sm:text-xs">
+                    Business Email
+                  </p>
+                  <p className="truncate text-base font-bold text-white sm:text-lg">
+                    {emailAddress}
+                  </p>
+                </div>
+
+                <ArrowRight className="ml-auto h-5 w-5 shrink-0 text-slate-600 transition-transform group-hover:translate-x-1 group-hover:text-pink-400" />
+              </a>
+            </div>
+          </div>
+
+          {/* Form */}
+          <div className="min-w-0 rounded-[1.75rem] border border-white/10 bg-white/[0.035] p-4 shadow-2xl backdrop-blur-md sm:rounded-[2.25rem] sm:p-8 lg:p-10">
+            <h2 className="mb-6 text-2xl font-bold tracking-tight text-white sm:mb-8">
+              Start Your Project
+            </h2>
+
+            <form className="space-y-5 sm:space-y-6" onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={updateField}
+                className="hidden"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <label className="ml-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Email
+                  <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    Full Name
                   </label>
                   <input
-                    name="email"
-                    type="email"
-                    value={form.email}
+                    name="name"
+                    type="text"
+                    value={form.name}
                     onChange={updateField}
-                    placeholder="your@email.com"
-                    className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-white placeholder-slate-600 outline-none transition focus:border-pink-500/50"
+                    placeholder="Your Name"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-pink-500/50"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="ml-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Interested Service
+                  <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                    Phone
                   </label>
-                  <select
-                    name="service"
-                    value={form.service}
+                  <input
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
                     onChange={updateField}
-                    className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-white outline-none transition focus:border-pink-500/50"
-                  >
-                    {services.map((item) => (
-                      <option key={item} value={item} className="bg-slate-950">
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <label className="ml-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
-                    Message
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={5}
-                    value={form.message}
-                    onChange={updateField}
-                    placeholder="Tell us about your project..."
-                    className="w-full resize-none rounded-2xl border border-white/10 bg-slate-900/60 px-5 py-4 text-white placeholder-slate-600 outline-none transition focus:border-pink-500/50"
+                    placeholder="+974"
+                    className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-pink-500/50"
                   />
                 </div>
+              </div>
 
-                {status.message && (
-                  <div
-                    className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm ${
-                      status.type === "success"
-                        ? "border-green-500/20 bg-green-500/10 text-green-300"
-                        : "border-red-500/20 bg-red-500/10 text-red-300"
-                    }`}
-                  >
-                    {status.type === "success" ? (
-                      <CheckCircle2 size={18} />
-                    ) : (
-                      <AlertCircle size={18} />
-                    )}
-                    {status.message}
-                  </div>
-                )}
+              <div className="space-y-2">
+                <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Email
+                </label>
+                <input
+                  name="email"
+                  type="email"
+                  value={form.email}
+                  onChange={updateField}
+                  placeholder="your@email.com"
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-pink-500/50"
+                />
+              </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-2xl bg-white px-10 text-sm font-black uppercase tracking-widest text-slate-950 transition-all hover:scale-[1.01] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+              <div className="space-y-2">
+                <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Interested Service
+                </label>
+                <select
+                  name="service"
+                  value={form.service}
+                  onChange={updateField}
+                  className="w-full rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 text-white outline-none transition focus:border-pink-500/50"
                 >
-                  <span className="relative z-10 flex items-center gap-2">
-                    {loading ? (
-                      <>
-                        Sending
-                        <Loader2 size={16} className="animate-spin" />
-                      </>
-                    ) : (
-                      <>
-                        Send Message
-                        <Send size={16} />
-                      </>
-                    )}
-                  </span>
+                  {services.map((item) => (
+                    <option key={item} value={item} className="bg-slate-950">
+                      {item}
+                    </option>
+                  ))}
+                </select>
+              </div>
 
-                  <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-pink-100/70 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-                </button>
+              <div className="space-y-2">
+                <label className="ml-1 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                  Message
+                </label>
+                <textarea
+                  name="message"
+                  rows={5}
+                  value={form.message}
+                  onChange={updateField}
+                  placeholder="Tell us about your project..."
+                  className="w-full resize-none rounded-2xl border border-white/10 bg-slate-900/60 px-4 py-4 text-white outline-none transition placeholder:text-slate-600 focus:border-pink-500/50"
+                />
+              </div>
 
-                <p className="text-center text-xs text-slate-500">
-                  Prefer faster communication? Contact us directly on WhatsApp.
-                </p>
-
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center rounded-2xl border border-green-500/20 bg-green-500/5 px-6 py-4 text-sm font-semibold text-green-300 transition hover:bg-green-500/10"
+              {status.message && (
+                <div
+                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm ${
+                    status.type === "success"
+                      ? "border-green-500/20 bg-green-500/10 text-green-300"
+                      : "border-red-500/20 bg-red-500/10 text-red-300"
+                  }`}
                 >
-                  Message on WhatsApp
-                </a>
-              </form>
-            </div>
+                  {status.type === "success" ? (
+                    <CheckCircle2 size={18} className="shrink-0" />
+                  ) : (
+                    <AlertCircle size={18} className="shrink-0" />
+                  )}
+                  <span>{status.message}</span>
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-2xl bg-white px-6 text-sm font-black uppercase tracking-widest text-slate-950 transition hover:scale-[1.01] active:scale-95 disabled:cursor-not-allowed disabled:opacity-70"
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {loading ? (
+                    <>
+                      Sending
+                      <Loader2 size={16} className="animate-spin" />
+                    </>
+                  ) : (
+                    <>
+                      Send Message
+                      <Send size={16} />
+                    </>
+                  )}
+                </span>
+
+                <div className="absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-pink-100/70 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              </button>
+
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-green-500 px-6 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-green-950/30 transition hover:bg-green-400 active:scale-95"
+              >
+                <MessageSquare size={18} />
+                Message on WhatsApp
+              </a>
+            </form>
           </div>
         </div>
       </section>
