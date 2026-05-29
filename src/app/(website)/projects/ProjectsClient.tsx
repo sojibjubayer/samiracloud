@@ -34,13 +34,13 @@ const projects = [
     external: false,
   },
   {
-    title: "Consultancy CRM",
+    title: "Immigration Consultancy CRM",
     category: "CRM Systems",
     desc: "Automated client lifecycle management designed specifically for immigration, service, and business consultancies.",
     tags: ["CRM", "Automation", "Security"],
     icon: BarChart3,
-    link: "/demos/consultant-crm",
-    external: false,
+    link: "https://crm.samiracloud.com",
+    external: true,
   },
   {
     title: "Digital Attendance Suite",
