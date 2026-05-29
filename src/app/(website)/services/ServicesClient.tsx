@@ -155,12 +155,12 @@ export default function ServicesClient() {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
 
-              <Link
+              {/* <Link
                 href="/demos"
                 className="inline-flex items-center justify-center rounded-2xl border border-slate-300 bg-white px-6 py-3.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
               >
                 View Demos
-              </Link>
+              </Link> */}
             </div>
           </div>
 
