@@ -2,7 +2,6 @@ import Link from "next/link";
 import {
   ArrowUpRight,
   Sparkles,
-  CheckCircle2,
   Globe2,
   Code2,
   Users,
@@ -10,10 +9,10 @@ import {
 } from "lucide-react";
 
 const services = [
-  { name: "Google Business Profile", price: "199", icon: Globe2 },
-  { name: "Web Development", price: "299", icon: Code2 },
-  { name: "Custom CRM System", price: "999", icon: Users },
-  { name: "Staff Attendance & Payroll", price: "399", icon: Clock3 },
+  { name: "Google Business Profile", icon: Globe2 },
+  { name: "Web Development", icon: Code2 },
+  { name: "Custom CRM System", icon: Users },
+  { name: "Staff Attendance & Payroll", icon: Clock3 },
 ];
 
 export default function HeroSection() {
@@ -69,14 +68,6 @@ export default function HeroSection() {
                   <h2 className="text-sm font-bold leading-snug text-white sm:text-base">
                     {item.name}
                   </h2>
-
-                  <p className="mt-3 flex items-center gap-2 text-sm text-slate-400">
-                    <CheckCircle2 size={15} className="shrink-0 text-blue-400" />
-                    From{" "}
-                    <span className="font-bold text-white">
-                      {item.price} QAR
-                    </span>
-                  </p>
                 </div>
               );
             })}

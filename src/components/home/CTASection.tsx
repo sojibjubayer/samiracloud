@@ -8,7 +8,7 @@ export default function CTASection() {
     "Web Development",
     "Google Business Profile",
     "QR Attendance",
-    "CRM System",
+    "Immigration CRM System",
   ];
 
   return (
