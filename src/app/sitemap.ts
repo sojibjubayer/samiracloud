@@ -1,26 +1,38 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://samiracloud.com";
+
   return [
     {
-      url: "https://samiracloud.com",
+      url: `${baseUrl}/services`,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
-      url: "https://samiracloud.com/services",
+      url: `${baseUrl}/contact`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
-      url: "https://samiracloud.com/demos",
+      url: `${baseUrl}/services/web-development`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
     },
     {
-      url: "https://samiracloud.com/about",
+      url: `${baseUrl}/services/immigration-crm-qatar`,
       lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.95,
     },
     {
-      url: "https://samiracloud.com/contact",
+      url: `${baseUrl}/services/attendance-systems`,
       lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.85,
     },
   ];
 }
