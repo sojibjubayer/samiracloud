@@ -23,8 +23,8 @@ const serviceLinks = [
     href: "/services/web-development",
   },
   {
-    label: "CRM Systems",
-    href: "/services/crm-systems",
+    label: "Immigration CRM Systems",
+    href: "/services/immigration-crm-qatar",
   },
   {
     label: "QR Attendance Systems",
@@ -188,7 +188,7 @@ export default function Navbar() {
                         {link.href === "/services/web-development" &&
                           "Responsive websites built for business growth"}
 
-                        {link.href === "/services/crm-systems" &&
+                        {link.href === "/services/immigration-crm-qatar" &&
                           "Custom CRM platforms for leads and workflows"}
 
                         {link.href === "/services/attendance-systems" &&

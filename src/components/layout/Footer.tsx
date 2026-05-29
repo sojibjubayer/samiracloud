@@ -40,10 +40,10 @@ export default function Footer() {
 
               <li>
                 <Link
-                  href="/services/crm-systems"
+                  href="/services/immigration-crm-qatar"
                   className="text-sm text-slate-400 transition-colors hover:text-pink-400"
                 >
-                  CRM Systems
+                  Immigration CRM Systems
                 </Link>
               </li>
 
