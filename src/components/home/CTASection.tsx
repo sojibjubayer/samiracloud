@@ -13,7 +13,7 @@ export default function CTASection() {
 
   return (
     <section
-      className="relative isolate overflow-hidden bg-slate-950 py-14 sm:py-20 lg:py-24"
+      className="relative isolate overflow-hidden bg-slate-950 pt-20 pb-14 sm:py-20 lg:py-24"
       aria-label="Samira Cloud Call to Action"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
