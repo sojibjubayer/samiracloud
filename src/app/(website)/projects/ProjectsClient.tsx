@@ -96,7 +96,7 @@ export default function ProjectsClient() {
       : projects.filter((project) => project.category === filter);
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white">
+    <main className="relative min-h-screen overflow-hidden bg-slate-950 text-white pt-16">
       {/* Background */}
       <div
         aria-hidden="true"

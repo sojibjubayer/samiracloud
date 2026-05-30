@@ -93,7 +93,7 @@ const capabilities = [
 
 export default function AboutClient() {
   return (
-    <main className="overflow-hidden bg-slate-950 text-white">
+    <main className="overflow-hidden bg-slate-950 text-white pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-white/10">
         <div aria-hidden="true" className="absolute inset-0 -z-10">

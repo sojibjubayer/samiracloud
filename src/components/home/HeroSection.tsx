@@ -29,7 +29,7 @@ const heroStats = [
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-[#020617] pb-14 pt-24 text-white sm:pb-18 sm:pt-24 lg:pb-24 lg:pt-28">
+    <section className="relative overflow-hidden bg-[#020617] pb-14 pt-28 text-white sm:pb-18 sm:pt-24 lg:pb-24 lg:pt-28">
       <div aria-hidden="true" className="absolute inset-0 -z-10">
         <div className="absolute -top-32 left-1/2 h-152 w-152 -translate-x-1/2 rounded-full bg-blue-600/20 blur-[140px]" />
         <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-500/10 blur-[120px]" />

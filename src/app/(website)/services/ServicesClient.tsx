@@ -151,7 +151,7 @@ const faqs = [
 
 export default function ServicesClient() {
   return (
-    <main className="overflow-hidden bg-white text-slate-900">
+    <main className="overflow-hidden bg-white text-slate-900 pt-16">
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-200 bg-[radial-gradient(circle_at_top,rgba(59,130,246,0.16),transparent_35%),radial-gradient(circle_at_right,rgba(236,72,153,0.14),transparent_28%),linear-gradient(to_bottom,#f8fbff,white)]">
         <div className="mx-auto max-w-7xl px-4 pb-14 pt-16 sm:px-6 sm:pb-16 sm:pt-20 lg:px-8 lg:pb-20 lg:pt-28">
