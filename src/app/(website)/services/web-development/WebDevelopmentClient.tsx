@@ -216,7 +216,7 @@ export default function WebDevelopmentClient() {
                 </Link>
 
                 <Link
-                  href="https://wa.me/+97471204020"
+                  href="https://wa.me/+97471294020"
                   className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white/90 px-8 text-sm font-bold text-slate-700 shadow-sm transition-all hover:bg-white"
                 >
                   <MessageCircle size={18} className="text-green-500" />
